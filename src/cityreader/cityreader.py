@@ -24,7 +24,7 @@ class City:
     self.lon = lon
 
   def __str__(self):
-    return f"City: {self.name}"
+    return f"City: {self.name}, {self.lat}, {self.lon}"
 
 
 cities = []
@@ -39,20 +39,16 @@ def cityreader(cities=[]):
 
   with open(filename) as csvfile:
     reader = csv.DictReader(csvfile)
-    line_count = 0
     for row in reader:
-      if line_count == 0:
-        line_count += 1
-      elif line_count > 0:
-        city = City(row['city'], row['lat'], row['lng'])
-        cities.append(city)
+      city = City(row['city'], row['lat'], row['lng'])
+      cities.append(city)
   return cities
 
 cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(c.name)
+    print(c)
 
 # STRETCH GOAL!
 #
