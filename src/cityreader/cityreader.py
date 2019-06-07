@@ -14,20 +14,44 @@
 #
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
+
+import os
+import csv
+class City:
+  def __init__(self, name, lat, lon):
+    self.name = name
+    self.lat = lat
+    self.lon = lon
+
+  def __str__(self):
+    return f"City: {self.name}"
+
+
 cities = []
 
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
   # `cities` list
-    
-    return cities
+  path = os.getcwd()
+  print(path)
+
+  with open('/Users/ilgarilyasov/Desktop/Dev/1 - Lambda School 246app/CS18/Day 4/Sprint-Challenge--Intro-Python/src/cityreader/cities.csv') as csvfile:
+    reader = csv.DictReader(csvfile)
+    line_count = 0
+    for row in reader:
+      if line_count == 0:
+        line_count += 1
+      elif line_count > 0:
+        city = City(row['city'], row['lat'], row['lng'])
+        cities.append(city)
+  return cities
 
 cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(c)
+    print(c.name)
 
 # STRETCH GOAL!
 #
