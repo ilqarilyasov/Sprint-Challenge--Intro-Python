@@ -28,7 +28,7 @@ a = []
 
 for human in humans:
     if human.name[0] == "D":
-        a.append(human)
+        a.append(human.name)
 
 print(a)
 
@@ -39,7 +39,7 @@ b = []
 
 for human in humans:
     if human.name[-1] == "e":
-        b.append(human)
+        b.append(human.name)
 
 print(b)
 
@@ -50,15 +50,15 @@ c = []
 
 for human in humans:
     if human.name[0] == "C":
-        c.append(human)
+        c.append(human.name)
     elif human.name[0] == "D":
-        c.append(human)
+        c.append(human.name)
     elif human.name[0] == "E":
-        c.append(human)
+        c.append(human.name)
     elif human.name[0] == "F":
-        c.append(human)
+        c.append(human.name)
     elif human.name[0] == "G":
-        c.append(human)
+        c.append(human.name)
 
 print(c)
 
@@ -67,8 +67,7 @@ print("Ages plus 10:")
 d = []
 
 for human in humans:
-    if human.age > 10:
-        d.append(human.age)
+    d.append((human.age + 10))
 
 print(d)
 
@@ -90,7 +89,7 @@ print("Names and ages between 27 and 32:")
 f = []
 
 for human in humans:
-    if human.age > 27 and human.age < 32:
+    if human.age > 27 and human.age <= 32:
         name_age_tuple = (human.name, human.age)
         f.append(name_age_tuple)
 
