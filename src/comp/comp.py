@@ -76,6 +76,11 @@ print(d)
 # joined to the age with a hyphen, for example "David-31", for all humans.
 print("Name hyphen age:")
 e = []
+
+for human in humans:
+    newString = f"{human.name}-{human.age}"
+    e.append(newString)
+
 print(e)
 
 # Write a list comprehension that creates a list of tuples containing name and
