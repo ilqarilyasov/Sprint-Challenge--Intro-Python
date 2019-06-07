@@ -65,6 +65,11 @@ print(c)
 # Write a list comprehension that creates a list of all the ages plus 10.
 print("Ages plus 10:")
 d = []
+
+for human in humans:
+    if human.age > 10:
+        d.append(human.age)
+
 print(d)
 
 # Write a list comprehension that creates a list of strings which are the name
