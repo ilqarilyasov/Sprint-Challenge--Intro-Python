@@ -78,8 +78,8 @@ print("Name hyphen age:")
 e = []
 
 for human in humans:
-    newString = f"{human.name}-{human.age}"
-    e.append(newString)
+    name_with_age = f"{human.name}-{human.age}"
+    e.append(name_with_age)
 
 print(e)
 
@@ -88,6 +88,12 @@ print(e)
 # inclusive.
 print("Names and ages between 27 and 32:")
 f = []
+
+for human in humans:
+    if human.age > 27 and human.age < 32:
+        name_age_tuple = (human.name, human.age)
+        f.append(name_age_tuple)
+
 print(f)
 
 # Write a list comprehension that creates a list of new Humans like the old
