@@ -33,10 +33,11 @@ def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
   # `cities` list
-  path = os.getcwd()
-  print(path)
+  dirpath = os.getcwd()
+  foldername = os.path.basename(dirpath)
+  filename = f'{dirpath}/src/cityreader/cities.csv'
 
-  with open('/Users/ilgarilyasov/Desktop/Dev/1 - Lambda School 246app/CS18/Day 4/Sprint-Challenge--Intro-Python/src/cityreader/cities.csv') as csvfile:
+  with open(filename) as csvfile:
     reader = csv.DictReader(csvfile)
     line_count = 0
     for row in reader:
