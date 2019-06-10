@@ -14,14 +14,35 @@
 #
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
+
+import os
+import csv
+class City:
+  def __init__(self, name, lat, lon):
+    self.name = name
+    self.lat = lat
+    self.lon = lon
+
+  def __str__(self):
+    return f"City: {self.name}, {self.lat}, {self.lon}"
+
+
 cities = []
 
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
   # `cities` list
-    
-    return cities
+  dirpath = os.getcwd()
+  foldername = os.path.basename(dirpath)
+  filename = f'{dirpath}/src/cityreader/cities.csv'
+
+  with open(filename) as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+      city = City(row['city'], float(row['lat']), float(row['lng']))
+      cities.append(city)
+  return cities
 
 cityreader(cities)
 
@@ -68,4 +89,18 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # Go through each city and check to see if it falls within 
   # the specified coordinates.
 
+  # this is checking the type but test values are integers, so I had to comment it out
+  # if type(lat1) == float:
+  #   if type(lat2) == float:
+  #     if type(lon1) == float:
+  #       if type(lon2) == float:
+
+  for city in cities:
+    if (city.lat > lat1 and city.lat < lat2) or (city.lat < lat1 and city.lat > lat2):
+      if (city.lon > lon1 and city.lon < lon2) or (city.lon < lon1 and city.lon > lon2):
+        within.append(city)
+
   return within
+
+
+cityreader_stretch(45, -100, 32, -120, cities)
